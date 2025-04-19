@@ -108,6 +108,7 @@
 {%- endstyle -%}
 
 <script src="{{ 'cart-notification.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'header-hover-menu.js' | asset_url }}" defer="defer"></script>
 
 {%- liquid
   for block in section.blocks
@@ -191,6 +192,8 @@
       if section.settings.menu != blank
         if section.settings.menu_type_desktop == 'dropdown'
           render 'header-dropdown-menu'
+        elsif section.settings.menu_type_desktop == 'hover'
+          render 'header-hover-menu'
         elsif section.settings.menu_type_desktop != 'drawer'
           render 'header-mega-menu'
         endif
@@ -541,6 +544,10 @@
         {
           "value": "drawer",
           "label": "t:sections.header.settings.menu_type_desktop.options__3.label"
+        },
+        {
+          "value": "hover",
+          "label": "Hover"
         }
       ],
       "default": "dropdown",

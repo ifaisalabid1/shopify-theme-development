@@ -4,8 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "pnpm dlx @tailwindcss/cli -i ./assets/tailwind-input.css -o ./assets/tailwind-output.css --watch",
-    "build": "pnpm dlx @tailwindcss/cli -i ./assets/tailwind-input.css -o ./assets/tailwind-output.css --minify"
+    "tailwind:dev": "pnpm dlx @tailwindcss/cli -i ./assets/tailwind-input.css -o ./assets/tailwind-output.css --watch",
+    "shopify:dev": "shopify theme dev",
+    "dev": "concurrently \"pnpm shopify:dev\" \"pnpm tailwind:dev\"", 
+    "build": "pnpm dlx @tailwindcss/cli -i ./assets/tailwind-input.css -o ./assets/tailwind-output.css --minify",
+    "pull": "shopify theme pull",
+    "push": "shopify theme push"
   },
   "keywords": [],
   "author": "",
@@ -13,6 +17,7 @@
   "packageManager": "pnpm@10.8.1",
   "devDependencies": {
     "@tailwindcss/cli": "^4.1.4",
+    "concurrently": "^9.1.2",
     "tailwindcss": "^4.1.4"
   }
 }
